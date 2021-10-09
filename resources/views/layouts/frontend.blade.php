@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SiBook</title>
+    <title>SiBook | @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/font-awesome.min.css') }}" />
@@ -21,14 +21,7 @@
                 <div id="sidebar-wrapper">
                     <nav id="spy">
                         <ul class="sidebar-nav nav">
-                            <li class="brand_1"><a href="index.html"><i class="fa fa-book"></i>SiBook</a></li>
-                            <hr>
-                            <li class="active_main"><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
-                            <li><a href="people.html"><i class="fa fa-user"></i>Profil</a></li>
-                            <li><a href="music.html"><i class="fa fa-book"></i>Buku</a></li>
-
-                            <li class="link"><a href="register.html">Register</a></li>
-                            <li class="link_1"><a href="login.html">Log in</a></li>
+                            @yield('menu')
                         </ul>
                     </nav>
                 </div>
@@ -38,6 +31,8 @@
                         <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle">                    </a>                </h1>
                     </div>
                 </div>
+
+                @yield('content')
                 
                 <section id="footer" class="clearfix">
                     <div class="col-sm-12">

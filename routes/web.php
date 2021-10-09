@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.frontend');
-});
+    return view('home');
+})->name('home');
+
+Route::get('/buku', function(){
+    return view('buku');
+})->name('buku');
