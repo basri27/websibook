@@ -22,6 +22,7 @@
                     <nav id="spy">
                         <ul class="sidebar-nav nav">
                             <li class="brand_1"><a href="index.html"><i class="fa fa-book"></i>SiBook</a></li>
+                            <hr>
                             <li class="active_main"><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
                             <li><a href="people.html"><i class="fa fa-user"></i>Profil</a></li>
                             <li><a href="music.html"><i class="fa fa-book"></i>Buku</a></li>
