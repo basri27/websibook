@@ -37,7 +37,7 @@
                 <section id="footer" class="clearfix">
                     <div class="col-sm-12">
                         <div class="footer">
-                            <p> © 2013 Your Website Name. All Rights Reserved | Design by <a
+                            <p> © 2021 SiBook. All Rights Reserved | Design by <a
                                     href="http://www.templateonweb.com">TemplateOnWeb</a></p>
                         </div>
                     </div>

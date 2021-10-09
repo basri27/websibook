@@ -9,8 +9,8 @@
     <li><a href="#"><i class="fa fa-user"></i>Profil</a></li>
     <li class="active_main"><a href="{{ route('buku') }}"><i class="fa fa-book"></i>Buku</a></li>
 
-    <li class="link"><a href="register.html">Register</a></li>
-    <li class="link_1"><a href="login.html">Log in</a></li>
+    <li class="link"><a href="{{ route('register') }}">Register</a></li>
+    <li class="link_1"><a href="{{ route('login') }}">Log in</a></li>
 @endsection
 
 @section('content')
