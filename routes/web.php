@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BooksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +22,11 @@ Route::get('/buku', function(){
     return view('buku');
 })->name('buku');
 
-Route::get('/dashboard', function(){
-    return view('adm_dashboard');
-})->name('dashboard');
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Admin
+Route::get('/admin/book', [BooksController::class, 'backend_index'])->name('admin_index');
+Route::get('/admin/book/add', [BooksController::class, 'tambah'])->name('tambah');
+Route::post('/admin/addbook', [BooksController::class, 'add'])->name('adm_add');

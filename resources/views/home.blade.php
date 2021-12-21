@@ -12,7 +12,8 @@
     <li class="link"><a href="{{ route('register') }}">Register</a></li>
     <li class="link_1"><a href="{{ route('login') }}">Log in</a></li>
 	@elseif (Auth::user()->username=="admin")
-	<li class="active_main"><a href="#"><i class="fa fa-book"></i>Manage Book</a></li>
+	<li class="active_main"><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
+	<li><a href="{{ route('admin_index') }}"><i class="fa fa-book"></i>Manage Book</a></li>
 	<form action="{{ route('logout') }}" method="POST">
 		@csrf
 		<li>
@@ -149,52 +150,6 @@
     </div>
 </section>
 @elseif(Auth::user()->username=='admin')
-<section id="people" class="clearfix">
-		  <div class="col-sm-12">
-		   <div class="people_1">
-		     <h3 class="text-center">Daftar Buku & Materi</h3>
-		   </div>
-		  </div>
-		</section>
-<section id="login_main" class="clearfix">
-	<section id="login" class="clearfix">
-        <div class="container">
-			<div class="table-responsive-bordered">
-	                <table id="dataTable" class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Judul</th>
-                            <th>Tanggal</th>
-                            <th>Pengupload</th>
-                            <!-- <th>Alamat</th>
-                            <th>Umur</th>
-                            <th>Pekerjaan</th>
-                            <th>Jenis Kelamin</th> -->
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Tutorial Laravel</td>
-                            <td>27 September 2000</td>
-                            <td>M. Basri</td>
-                            <!-- <td>Jl. Kayutangi</td>
-                            <td>21</td>
-                            <td>Mahasiswa</td>
-                            <td>Laki-laki</td> -->
-                            <td>
-                                <center>
-                                    <a href=""><i class="fa fa-edit"></i></a>
-                                    <a href=""><i class="fa fa-trash"></i></a>
-                                </center>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-		</div></div>
-</section></section>
 @else
 <section id="header" class="clearfix">
   	<div class="col-sm-12 header_main">
@@ -306,12 +261,4 @@
     </div>
 </section>
 @endif
-<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-<script>
-    $(document).ready( function () {
-        $('#dataTable').DataTable();
-    } );
-</script>
 @endsection
