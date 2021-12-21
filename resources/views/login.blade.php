@@ -1,12 +1,11 @@
 @extends('layouts.frontend')
 
-@section('title', 'Home')
+@section('title', 'Login')
 
 @section('menu')
     <li class="brand_1"><a href="{{ route('home') }}"><i class="fa fa-book"></i>SiBook</a></li>
     <li><p>MENU</p></li>
     <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-    <li><a href="#"><i class="fa fa-user"></i>Profil</a></li>
     <li><a href="{{ route('buku') }}"><i class="fa fa-book"></i>Buku</a></li>
 
     <li class="link"><a href="{{ route('register') }}">Register</a></li>
@@ -20,19 +19,22 @@
     	<div class="row">
     	    <div class="col-xs-12">
         	    <div class="form-wrap">
-                <h1>Login</h1>
-                    <form role="form" action="javascript:;" method="post" id="login-form" autocomplete="off">
+                <h1>Login SiBook</h1>
+                    <form role="form" action="{{ route('login') }}" method="post" id="login-form" autocomplete="off">
+                        @csrf
                         <div class="form-group">
-                            <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="user@gmail.com">
+                            <label for="username" class="sr-only">Email</label>
+                            <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" placeholder="Username" required>
                         </div>
                         <div class="form-group">
-                            <label for="key" class="sr-only">Password</label>
-                            <input type="password" name="key" id="key" class="form-control" placeholder="Password">
+                            <label for="password" class="sr-only">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" >
+                            @error('username')
+                                <span class="invalid-feedback" role="alert">
+                                {{ "Username atau kata sandi salah" }}
+                                </span>
+                            @enderror
                         </div>
-                        <div class="checkbox">
-                            <span class="character-checkbox" onClick="showPassword()"></span>
-                            <span class="label">Show password</span>                        </div>
                         <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in">
                     </form>
                     <hr>
@@ -44,21 +46,4 @@
       </section>
 </section>
 <br><br><br><br><br><br><br><br><br><br>
-<script type="text/javascript">
-	function showPassword() {    
-        var key_attr = $('#key').attr('type');
-        
-        if(key_attr != 'text') {
-            
-            $('.checkbox').addClass('show');
-            $('#key').attr('type', 'text');
-            
-        } else {
-            
-            $('.checkbox').removeClass('show');
-            $('#key').attr('type', 'password');
-            
-        }
-    }
-</script>
 @endsection
