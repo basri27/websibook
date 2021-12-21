@@ -28,5 +28,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Admin
 Route::get('/admin/book', [BooksController::class, 'backend_index'])->name('admin_index');
-Route::get('/admin/book/add', [BooksController::class, 'tambah'])->name('tambah');
-Route::post('/admin/addbook', [BooksController::class, 'add'])->name('adm_add');
+//Admin Add
+Route::get('/admin/book/tambah', [BooksController::class, 'tambah'])->name('adm_tambah');
+Route::post('/admin/book/add', [BooksController::class, 'add'])->name('adm_add');
+//Admin Edit
+Route::get('admin/book/edit/{id}', [BooksController::class, 'edit'])->name('adm_edit');
+Route::patch('admin/book/update/{id}', [BooksController::class, 'update'])->name('adm_update');
+//Admin Delete
+Route::delete('admin/book/{id}', [BooksController::class, 'delete'])->name('adm_deleteBook');

@@ -28,12 +28,12 @@
 <section id="login_main" class="clearfix">
 	<section id="login" class="clearfix">
 		<div class="container">
-			<a href="{{ route('tambah') }}" class="btn btn-primary" style="float: right">Tambah</a>
+			<a href="{{ route('adm_tambah') }}" class="btn btn-primary" style="float: right">Tambah</a>
 		    <table id="dataTable" class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>No</th>
                         <th>Judul</th>
+                        <th>Deskripsi</th>
                         <th>Tanggal</th>
                         <th>Pengupload</th>
                         <th>Aksi</th>
@@ -41,17 +41,18 @@
                 </thead>
                 <tbody>
 					@foreach ($books as $book)
-                    <?php $no = 1; ?>
                     <tr>
-                        <td>{{ $no = $no++ }}</td>
                         <td>{{ $book->title }}</td>
+                        <td>{{ $book->desc }}</td>
                         <td>{{ $book->created_at }}</td>
                         <td>{{ $book->user->name}}</td>
                         <td>
-                            <center>
-                                <a href=""><i class="fa fa-edit"></i></a>
-                                <a href=""><i class="fa fa-trash"></i></a>
-                            </center>
+                            <form action="{{ route('adm_deleteBook', $book->id) }}" method="post">
+                                @method('DELETE')
+                                @csrf                                                            
+                                <a type="button" class="btn btn-warning btn-sm" href="{{ route('adm_edit', $book->id) }}"><i class="fa fa-edit"></i> Edit</a>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ingin menghapus ini?')"><i class="fa fa-trash"></i> Hapus</button>
+                            </form>
                         </td>
                     </tr>
 					@endforeach

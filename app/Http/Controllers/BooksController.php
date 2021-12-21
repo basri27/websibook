@@ -13,6 +13,7 @@ class BooksController extends Controller
         return view('admin.backend_index', compact('books'));
     }
 
+    //Tambah data
     public function tambah() {
         return view('admin.adm_add');
     }
@@ -34,6 +35,30 @@ class BooksController extends Controller
                 'image' => $path
             ]);
         }
+        return redirect()->route('admin_index');
+    }
+
+    //Ubah data
+    public function edit($id) {
+        $books = Book::where('id', '=', $id)->first();
+        return view('admin.adm_edit', compact('books'));
+    }
+    public function update(Request $request, $id) {
+        $books = Book::where('id', '=', $id)->first();
+        
+        $books->update([
+            'title' => $request->input('title'),
+            'desc' => $request->input('desc'),
+            'user_id' => $request->input('user_id')
+        ]);
+
+        return redirect()->route('admin_index');
+    }
+
+    //Hapus data
+    public function delete($id) {
+        $book = Book::where('id', '=', $id)->first();
+        $book->delete();
 
         return redirect()->route('admin_index');
     }
