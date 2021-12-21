@@ -49,27 +49,15 @@
       
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
-                        <div class="item">
-                            <img src="img/1.jpg" alt="...">
+						@foreach ($books as $book)
+                        <div class="item {{ $loop->first ? 'active' : '' }}">
+                            <img src="{{ asset('/image/' . $book->image) }}" style="width: 960px; height: 450px;">
                             <div class="carousel-caption">
-                                <p><a href="#">Integer nec odio</a></p>
-                                <h2> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                                <p>{{ $book->title }}</p>
+                                <h2> {{ $book->desc }}</h2>
                             </div>
                         </div>
-                        <div class="item active">
-                            <img src="img/2.jpg" alt="...">
-                            <div class="carousel-caption">
-                                <p><a href="#">Praesent libero</a></p>
-                                <h2>Sed cursus ante dapibus diam.</h2>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="img/3.jpg" alt="...">
-                            <div class="carousel-caption">
-                                <p><a href="#">Nulla quis</a></p>
-                                <h2>Duis sagittis ipsum.Praesent mauris.</h2>
-                            </div>
-                        </div>
+						@endforeach
                     </div>
 
 					<!-- Controls -->
@@ -86,8 +74,9 @@
 			<div class="header_2 clearfix">
 				<div class="col-sm-12 header_main_3">
 					<div class="header_3">
-						<a href="#"><img src="img/7.jpg" width="100%" ></a>			   
-						<a href="#"><img src="img/7.jpg" width="100%" ></a>
+						@foreach ($buku as $book)
+						<a href="#"><img src="{{ asset('/image/' . $book->image) }}" style="width: 397px; height: 224px"></a>			   
+						@endforeach
 					</div>
 				</div>
 			</div>
@@ -98,59 +87,20 @@
 	<div class="col-sm-12">
 	    <div class="col-sm-12">
 	        <h3 class="text-center">Terbaru</h3> 
-            <div class="col-sm-2">
+            @foreach ($book_new as $book)
+			<div class="col-sm-2">
 	            <div class="culture">
-		            <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-		            <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-		            <p class="text-center">Pengupload</p>
-		            <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
+		            <a href="#"><img class="thumbnail" src="{{ asset('/image/' . $book->image) }}" style="width: 140px; height: 120px;"></a>
+		            <h5 class="text-center"><a href="#">{{ $book->title }}</a></h5>
+		            <p class="text-center">{{ $book->user->name }}</p>
+		            <h6 class="text-center"><a href="{{ asset('/file/' . $book->file) }}"><i class="fa fa-download"></i>Unduh</a></h6>
 		        </div>
             </div>
-            <div class="col-sm-2">
-	            <div class="culture">
-		            <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-		            <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-		            <p class="text-center">Pengupload</p>
-		            <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-		        </div>
-            </div>
-            <div class="col-sm-2">
-	            <div class="culture">
-		            <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-		            <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-		            <p class="text-center">Pengupload</p>
-		            <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-		        </div>
-            </div>
-            <div class="col-sm-2">
-	            <div class="culture">
-		            <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-		            <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-		            <p class="text-center">Pengupload</p>
-		            <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-		        </div>
-            </div>
-            <div class="col-sm-2">
-	            <div class="culture">
-		            <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-		            <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-		            <p class="text-center">Pengupload</p>
-		            <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-		        </div>
-            </div>
-            <div class="col-sm-2">
-	            <div class="culture">
-		            <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-		            <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-		            <p class="text-center">Pengupload</p>
-		            <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-		        </div>
-            </div>
+			@endforeach
         </div>
     </div>
 </section>
-@elseif(Auth::user()->username=='admin')
-@else
+@elseif(Auth::user()->username!='admin')
 <section id="header" class="clearfix">
   	<div class="col-sm-12 header_main">
         <div class="col-sm-8 header_main_1">
@@ -160,27 +110,15 @@
       
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
-                        <div class="item">
-                            <img src="img/1.jpg" alt="...">
+						@foreach ($books as $book)
+                        <div class="item {{ $loop->first ? 'active' : '' }}">
+                            <img src="{{ asset('/image/' . $book->image) }}" style="width: 960px; height: 450px;">
                             <div class="carousel-caption">
-                                <p><a href="#">Integer nec odio</a></p>
-                                <h2> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                                <p>{{ $book->title }}</p>
+                                <h2> {{ $book->desc }}</h2>
                             </div>
                         </div>
-                        <div class="item active">
-                            <img src="img/2.jpg" alt="...">
-                            <div class="carousel-caption">
-                                <p><a href="#">Praesent libero</a></p>
-                                <h2>Sed cursus ante dapibus diam.</h2>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="img/3.jpg" alt="...">
-                            <div class="carousel-caption">
-                                <p><a href="#">Nulla quis</a></p>
-                                <h2>Duis sagittis ipsum.Praesent mauris.</h2>
-                            </div>
-                        </div>
+						@endforeach
                     </div>
 
 					<!-- Controls -->
@@ -197,8 +135,9 @@
 			<div class="header_2 clearfix">
 				<div class="col-sm-12 header_main_3">
 					<div class="header_3">
-						<a href="#"><img src="img/7.jpg" width="100%" ></a>			   
-						<a href="#"><img src="img/7.jpg" width="100%" ></a>
+						@foreach ($buku as $book)
+						<a href="#"><img src="{{ asset('/image/' . $book->image) }}" style="width: 397px; height: 224px"></a>			   
+						@endforeach
 					</div>
 				</div>
 			</div>
@@ -209,54 +148,16 @@
 	<div class="col-sm-12">
 	    <div class="col-sm-12">
 	        <h3 class="text-center">Terbaru</h3> 
-            <div class="col-sm-2">
+            @foreach ($book_new as $book)
+			<div class="col-sm-2">
 	            <div class="culture">
-		            <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-		            <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-		            <p class="text-center">Pengupload</p>
-		            <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
+		            <a href="#"><img class="thumbnail" src="{{ asset('/image/' . $book->image) }}" style="width: 140px; height: 120px;"></a>
+		            <h5 class="text-center"><a href="#">{{ $book->title }}</a></h5>
+		            <p class="text-center">{{ $book->user->name }}</p>
+		            <h6 class="text-center"><a href="{{ asset('/file/' . $book->file) }}"><i class="fa fa-download"></i>Unduh</a></h6>
 		        </div>
             </div>
-            <div class="col-sm-2">
-	            <div class="culture">
-		            <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-		            <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-		            <p class="text-center">Pengupload</p>
-		            <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-		        </div>
-            </div>
-            <div class="col-sm-2">
-	            <div class="culture">
-		            <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-		            <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-		            <p class="text-center">Pengupload</p>
-		            <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-		        </div>
-            </div>
-            <div class="col-sm-2">
-	            <div class="culture">
-		            <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-		            <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-		            <p class="text-center">Pengupload</p>
-		            <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-		        </div>
-            </div>
-            <div class="col-sm-2">
-	            <div class="culture">
-		            <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-		            <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-		            <p class="text-center">Pengupload</p>
-		            <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-		        </div>
-            </div>
-            <div class="col-sm-2">
-	            <div class="culture">
-		            <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-		            <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-		            <p class="text-center">Pengupload</p>
-		            <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-		        </div>
-            </div>
+			@endforeach
         </div>
     </div>
 </section>

@@ -22,17 +22,24 @@ class BooksController extends Controller
             'title' => 'required',
             'desc' => 'required',
             'user_id' => 'required',
-            'image' => 'required'
+            'file' => 'required',
         ]);
 
-        $path = $request->image->store('images');
+        $file = Request()->file;
+        $fileName = time() . '.' . $file->extension();
+        $file->move(public_path('file'), $fileName);
+
+        $image = Request()->image;
+        $imageName = time() . '.' . $image->extension();
+        $image->move(public_path('image'), $imageName);
 
         if($validated) {
             Book::create([
                 'title' => $request->input('title'),
                 'desc' => $request->input('desc'),
                 'user_id' => $request->input('user_id'),
-                'image' => $path
+                'file' => $fileName,
+                'image' => $imageName
             ]);
         }
         return redirect()->route('admin_index');
@@ -58,6 +65,12 @@ class BooksController extends Controller
     //Hapus data
     public function delete($id) {
         $book = Book::where('id', '=', $id)->first();
+        if ($book->image <> "") {
+            unlink(public_path('image') . '/' . $book->image);
+        }
+        if ($book->file <> "") {
+            unlink(public_path('file') . '/' . $book->file);
+        }
         $book->delete();
 
         return redirect()->route('admin_index');

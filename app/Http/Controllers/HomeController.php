@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Book;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $books = Book::latest()->take(3)->get();
+        $buku = Book::latest()->take(2)->get();
+        $book_new = Book::latest()->take(6)->get();
+
+        return view('home', compact('books', 'buku', 'book_new'));
     }
 }

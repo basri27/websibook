@@ -36,6 +36,9 @@
                 <label for="desc" class="form-label">Deskripsi</label>
                 <input type="text" class="form-control" name="desc" id="desc" value="{{ old('desc') }}">
                 <br>
+                <label for="file">File</label>
+                <input type="file" name="file">
+                <br>
                 <label for="image">Image</label>
                 <input type="file" name="image">
                 <input type="textbox" name="user_id" id="user_id" value="{{ Auth::user()->id }}" hidden>
