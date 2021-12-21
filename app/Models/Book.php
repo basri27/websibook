@@ -11,6 +11,7 @@ class Book extends Model
 
     protected $fillable = [
         'title',
+        'category_id',
         'desc',
         'user_id',
         'file',
@@ -19,5 +20,9 @@ class Book extends Model
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function category() {
+        return $this->belongsTo(Category::class);
     }
 }

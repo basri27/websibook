@@ -33,6 +33,13 @@
                 <label for="title" class="form-label">Judul</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
                 <br>
+                <label for="category_id" class="form-label">Kategori</label>
+                <select class="form-control" name="category_id" id="category_id">
+                    @foreach ($list_categories as $kategori)
+                        <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
+                    @endforeach
+                </select>
+                <br>
                 <label for="desc" class="form-label">Deskripsi</label>
                 <input type="text" class="form-control" name="desc" id="desc" value="{{ old('desc') }}">
                 <br>

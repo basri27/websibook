@@ -18,6 +18,10 @@ Route::get('/buku', function(){
     return view('buku');
 })->name('buku');
 
+Route::get('/profil', function() {
+    return view('profil');
+})->name('profil');
+
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

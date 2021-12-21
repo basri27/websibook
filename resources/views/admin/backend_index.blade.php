@@ -34,11 +34,11 @@
                     <tr>
                         <th>No</th>
                         <th>Judul</th>
+                        <th>Kategori</th>
                         <th>Deskripsi</th>
                         <th>Tanggal</th>
                         <th>Pengupload</th>
                         <th>Aksi</th>
-                        <th>Download</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,9 +47,10 @@
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $book->title }}</td>
+                        <td>{{ $book->category->name }}</td>
                         <td>{{ $book->desc }}</td>
                         <td>{{ $book->created_at }}</td>
-                        <td>{{ $book->user->name}}</td>
+                        <td>{{ $book->user->name }}</td>
                         <td>
                             <form action="{{ route('adm_deleteBook', $book->id) }}" method="post">
                                 @method('DELETE')
@@ -57,9 +58,6 @@
                                 <a type="button" class="btn btn-warning btn-sm" href="{{ route('adm_edit', $book->id) }}"><i class="fa fa-edit"></i> Edit</a>
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ingin menghapus ini?')"><i class="fa fa-trash"></i> Hapus</button>
                             </form>
-                        </td>
-                        <td>
-                            <a href="{{ asset('/file/' . $book->file) }}" class="fa fa-download"></a>
                         </td>
                     </tr>
 					@endforeach
