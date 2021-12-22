@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Book;
@@ -28,7 +29,9 @@ class HomeController extends Controller
         $books = Book::latest()->take(3)->get();
         $buku = Book::latest()->take(2)->get();
         $book_new = Book::latest()->take(6)->get();
+        $user = DB::table('users')->count();
+        $bk = DB::table('books')->count();
 
-        return view('home', compact('books', 'buku', 'book_new'));
+        return view('home', compact('books', 'buku', 'book_new', 'user', 'bk'));
     }
 }

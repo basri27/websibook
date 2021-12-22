@@ -78,6 +78,7 @@ class BooksController extends Controller
 
     public function backend_index() {
         $books = Book::with('category')->get();
+        
         return view('admin.backend_index', compact('books'));
     }
 

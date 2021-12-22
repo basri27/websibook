@@ -163,5 +163,37 @@
         </div>
     </div>
 </section>
+@else
+<section id="contact" class="clearfix">
+    <div class="container">
+        <div class="col-sm-6">
+	        <div class="contact_main_1">
+                <h2>Welcome Admin</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contact_us" class="clearfix">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="col-sm-6">
+				   	<div class="contact_us_1 text-center">
+						<p><i class="fa fa-user"></i></p>
+						<h4>Pengguna</h4>
+						<h5>{{ $user }} orang</h5>
+				   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="contact_us_1 text-center">
+						<p><i class="fa fa-book"></i></p>
+						<h4>Buku</h4>
+						<h5>{{ $bk }} buah</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 @endif
 @endsection
