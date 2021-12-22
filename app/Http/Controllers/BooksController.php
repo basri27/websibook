@@ -9,6 +9,11 @@ use App\Models\Category;
 
 class BooksController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //All Book
     public function category_book() {
         $books1 = Book::with('category')
@@ -79,6 +84,8 @@ class BooksController extends Controller
     public function backend_index() {
         $books = Book::with('category')->get();
         
+        $this->middleware('auth');
+
         return view('admin.backend_index', compact('books'));
     }
 

@@ -33,7 +33,7 @@
     <div class="col-sm-12">
 	    <div class="col-sm-8">
 	        <div class="people_header_1">
-                <form action="{{ route('book') }}">
+                <form action="{{ route('cari_buku') }}">
                     <p>Cari Buku</p>
                     <input placeholder="Masukkan nama buku..." class="form_1" type="text" name="cari">
                     <a href="{{ route('book') }}" class="btn btn-danger">Batal</a>
@@ -113,4 +113,5 @@
         </div>
     </div>
 </section>
+<br><br><br><br><br><br><br>
 @endsection
