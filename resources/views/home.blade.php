@@ -24,8 +24,10 @@
 	</form>
 	@else
     <li class="active_main"><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-    <li><a href="{{ route('profil') }}"><i class="fa fa-user"></i>Profil</a></li>
-    <li><a href="{{ route('buku') }}"><i class="fa fa-book"></i>Buku</a></li>
+	<?php $id = Auth::user()->id; ?>
+	<li><a href="{{ route('mybook', $id) }}"><i class="fa fa-user"></i>Buku Saya</a></li>
+	
+	<li><a href="{{ route('buku') }}"><i class="fa fa-book"></i>Buku</a></li>
     
 	<form action="{{ route('logout') }}" method="POST">
 		@csrf

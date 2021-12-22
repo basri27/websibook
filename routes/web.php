@@ -18,9 +18,12 @@ Route::get('/buku', function(){
     return view('buku');
 })->name('buku');
 
-Route::get('/profil', function() {
-    return view('profil');
-})->name('profil');
+//Buku User
+Route::get('/book/{id}', [BooksController::class, 'mybook'])->name('mybook');
+
+//User Input Buku
+Route::get('/{username}/buku/tambah', [BooksController::class, 'user_tambah'])->name('user_tambah');
+Route::post('/{username}/buku/add', [BooksController::class, 'user_add'])->name('user_add');
 
 Auth::routes();
 
@@ -32,10 +35,10 @@ Route::get('/admin/book', [BooksController::class, 'backend_index'])->name('admi
 Route::get('/admin/book/tambah', [BooksController::class, 'tambah'])->name('adm_tambah');
 Route::post('/admin/book/add', [BooksController::class, 'add'])->name('adm_add');
 //Admin Edit
-Route::get('admin/book/edit/{id}', [BooksController::class, 'edit'])->name('adm_edit');
-Route::patch('admin/book/update/{id}', [BooksController::class, 'update'])->name('adm_update');
+Route::get('/admin/book/edit/{id}', [BooksController::class, 'edit'])->name('adm_edit');
+Route::patch('/admin/book/update/{id}', [BooksController::class, 'update'])->name('adm_update');
 //Admin Delete
-Route::delete('admin/book/{id}', [BooksController::class, 'delete'])->name('adm_deleteBook');
+Route::delete('/admin/book/{id}', [BooksController::class, 'delete'])->name('adm_deleteBook');
 
 //User
 //Route::get('/', [BooksController::class, 'homepage'])->name('homepage');
