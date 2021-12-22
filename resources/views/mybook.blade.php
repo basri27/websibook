@@ -39,22 +39,24 @@
 	<div class="col-sm-12">
 	   	<div class="people_1">
             <div class="list_1 col-sm-12 clearfix">
-                <div class="col-sm-4">
                         @if (!empty($books))
                         @foreach ($books as $books)
-                        <a href="article.html"><img src="{{ asset('/image/' . $books->image) }}" class="iw"></a>
-                        <div class="blog_p_1lii clearfix">
-                            <h5 class="bold mgt">
-                                <r>{{ $books->title }}</r>
-                                <span class="pull-right col_1">
-                                    <a href="#"><i class="fa fa-pencil" href=""></i></a>
-                                </span>
-                            </h5>	
-                            <h6>By: <r class="col_1">{{ $books->user->name }}</r></h6>
-                            <h6>Kategori: <r class="col_1">{{ $books->category->name }}</r></h6>
-                            <p>{{ $books->desc }}</p>
-                            <h5 class="bold tc"><a href="article.html">Read More</a></h5>	
-                            <h6 class="bor_t">{{ $books->created_at }}<a class="pull-right" href="#"><i class="fa fa-trash-o"></i></a></h6>  
+                        <div class="col-sm-4">
+                            <a href="article.html"><img style="width: 350px; height: 300px;" src="{{ asset('/image/' . $books->image) }}" class="iw"></a>
+                            <div class="blog_p_1lii clearfix">
+                                <h5 class="bold mgt">
+                                    <r>{{ $books->title }}</r>
+                                    <span class="pull-right col_1">
+                                        <?php $id = Auth::user()->id;  ?>
+                                        <a href="{{ route('user_edit', $books->id, $id) }}"><i class="fa fa-pencil"></i></a>
+                                    </span>
+                                </h5>	
+                                <h6>By: <r class="col_1">{{ $books->user->name }}</r></h6>
+                                <h6>Kategori: <r class="col_1">{{ $books->category->name }}</r></h6>
+                                <p>Deskripsi: {{ $books->desc }}</p>
+                                <h5 class="bold tc"><a href="#">Read More</a></h5>	
+                                <h6 class="bor_t">{{ $books->created_at }}<a class="pull-right" href="#"><i class="fa fa-trash-o"></i></a></h6>  
+                            </div>
                         </div>
                         @endforeach
                         @else
@@ -64,35 +66,9 @@
                             </div>
                         </div>
                         @endif
-                    </div>
                 </div>
 		    </div>
         </div>
 	</div>
 </section>
-<!-- <section id="people" class="clearfix">
-	<div class="col-sm-12">
-        <div class="form_main clearfix">
-            <div class="col-sm-6">
-                <label class="form-label">ID</label>
-                <p>{{ Auth::user()->id }}</p>
-            </div>
-         	<div class="col-sm-6">
-                <label class="form-label">Nama</label>
-                <p>{{ Auth::user()->name }}</p>
-            </div>
-            <div class="col-sm-6">
-                <label class="form-label">Email</label>
-                <p>{{ Auth::user()->email }}</p>
-            </div>
-            <div class="col-sm-6">
-                <label class="form-label">Username</label>
-                <p>{{ Auth::user()->username }}</p>
-            </div>
-            <div class="col-sm-12 text-right">
-				<a href="#">Ubah</a>
-            </div>
-		</div>
-    </div>
-</section> -->
 @endsection

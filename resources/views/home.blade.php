@@ -11,7 +11,7 @@
     <li><a href="{{ route('buku') }}"><i class="fa fa-book"></i>Buku</a></li>
     <li class="link"><a href="{{ route('register') }}">Register</a></li>
     <li class="link_1"><a href="{{ route('login') }}">Log in</a></li>
-	@elseif (Auth::user()->username=="admin")
+	@elseif (Auth::user()->username=='admin')
 	<li class="active_main"><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
 	<li><a href="{{ route('admin_index') }}"><i class="fa fa-book"></i>Manage Book</a></li>
 	<form action="{{ route('logout') }}" method="POST">

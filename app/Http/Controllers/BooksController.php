@@ -14,7 +14,7 @@ class BooksController extends Controller
         return view('admin.backend_index', compact('books'));
     }
 
-    //Tambah data
+    //Admin tambah data
     public function tambah() {
         $list_categories = Category::all();
         return view('admin.adm_add', compact('list_categories'));
@@ -50,7 +50,7 @@ class BooksController extends Controller
         return redirect()->route('admin_index');
     }
 
-    //Ubah data
+    //Admin ubah data
     public function edit($id) {
         $books = Book::where('id', '=', $id)->first();
         $list_categories = Category::all();
@@ -124,5 +124,24 @@ class BooksController extends Controller
             ]);
         }
         return redirect()->route('mybook', $id);
+    }
+    //User Edit Book
+    public function user_edit($id, $user) {
+        $books = Book::where('id', '=', $id)->first();
+        $list_categories = Category::all();
+
+        return view('user.user_edit', compact('books', 'list_categories'));
+    }
+    public function user_update(Request $request, $id, $user) {
+        $books = Book::where('id', '=', $id)->first();
+
+        $books->update([
+            'title' => $request->input('title'),
+            'category_id' => $request->input('category_id'),
+            'desc' => $request->input('desc'),
+            'user_id' => $request->input('user_id')
+        ]);
+
+        return redirect()->route('mybook', $user);
     }
 }
