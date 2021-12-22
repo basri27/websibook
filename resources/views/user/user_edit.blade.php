@@ -53,12 +53,12 @@
                 <label for="desc" class="form-label">Deskripsi</label>
                 <input type="text" class="form-control" name="desc" id="desc" value="{{ $books->desc }}">
                 <br>
-                <label for="file">Ganti File</label>
+                <!-- <label for="file">Ganti File</label>
                 <input type="file" name="file">
                 <br>
                 <label for="file">Ganti Image</label>
                 <input type="file" name="file">
-                <br>
+                <br> -->
                 <input type="textbox" name="user_id" id="user_id" value="{{ Auth::user()->id }}" hidden>
                 <br>
                 <button type="submit" class="btn btn-primary">Simpan</button>

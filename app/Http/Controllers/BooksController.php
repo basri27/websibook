@@ -126,13 +126,13 @@ class BooksController extends Controller
         return redirect()->route('mybook', $id);
     }
     //User Edit Book
-    public function user_edit($id, $user) {
+    public function user_edit($id) {
         $books = Book::where('id', '=', $id)->first();
         $list_categories = Category::all();
 
         return view('user.user_edit', compact('books', 'list_categories'));
     }
-    public function user_update(Request $request, $id, $user) {
+    public function user_update(Request $request, $id) {
         $books = Book::where('id', '=', $id)->first();
 
         $books->update([
@@ -142,6 +142,19 @@ class BooksController extends Controller
             'user_id' => $request->input('user_id')
         ]);
 
-        return redirect()->route('mybook', $user);
+        return redirect()->route('home', compact('books'));
+    }
+    //User Delete Book
+    public function user_delete($id) {
+        $book = Book::where('id', '=', $id)->first();
+        if ($book->image <> "") {
+            unlink(public_path('image') . '/' . $book->image);
+        }
+        if ($book->file <> "") {
+            unlink(public_path('file') . '/' . $book->file);
+        }
+        $book->delete();
+
+        return redirect()->route('home');
     }
 }

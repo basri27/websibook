@@ -54,8 +54,12 @@
                                 <h6>By: <r class="col_1">{{ $books->user->name }}</r></h6>
                                 <h6>Kategori: <r class="col_1">{{ $books->category->name }}</r></h6>
                                 <p>Deskripsi: {{ $books->desc }}</p>
-                                <h5 class="bold tc"><a href="#">Read More</a></h5>	
-                                <h6 class="bor_t">{{ $books->created_at }}<a class="pull-right" href="#"><i class="fa fa-trash-o"></i></a></h6>  
+                                <h5 class="bold tc"><a href="#">Read More</a></h5>
+                                <form action="{{ route('user_delete', $books->id) }}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <h6 class="bor_t">{{ $books->created_at }}<button type="submit" class="pull-right" onclick="return confirm('Anda yakin ingin menghapus ini?')"><i class="fa fa-trash-o"></i></button></h6>
+                                </form>
                             </div>
                         </div>
                         @endforeach

@@ -38,9 +38,10 @@ Route::delete('/admin/book/{id}', [BooksController::class, 'delete'])->name('adm
 //Buku User
 Route::get('/{id}/book', [BooksController::class, 'mybook'])->name('mybook');
 //Buku User Edit
-Route::get('/{id}/{user}/buku/edit', [BooksController::class, 'user_edit'])->name('user_edit');
-Route::patch('/{id}/{user}/buku/update}', [BooksController::class, 'user_update'])->name('user_update');
-
+Route::get('/{id}/buku/edit', [BooksController::class, 'user_edit'])->name('user_edit');
+Route::patch('/{id}/buku/update}', [BooksController::class, 'user_update'])->name('user_update');
 //User Input Buku
 Route::get('/{id}/buku/tambah', [BooksController::class, 'user_tambah'])->name('user_tambah');
 Route::post('/{id}/buku/add', [BooksController::class, 'user_add'])->name('user_add');
+//User Delete Buku
+Route::delete('/{id}/buku/delete', [BooksController::class, 'user_delete'])->name('user_delete');
