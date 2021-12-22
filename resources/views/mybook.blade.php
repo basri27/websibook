@@ -9,7 +9,7 @@
     <li class="main"><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
     <?php $id = Auth::user()->id; ?>
     <li class="active_main"><a href="{{ route('mybook', $id) }}"><i class="fa fa-user"></i>Buku Saya</a></li>
-    <li><a href="{{ route('buku') }}"><i class="fa fa-book"></i>Buku</a></li>
+    <li><a href="{{ route('book') }}"><i class="fa fa-book"></i>Buku</a></li>
     
 	<form action="{{ route('logout') }}" method="POST">
 		@csrf
@@ -42,8 +42,9 @@
                         @if (!empty($books))
                         @foreach ($books as $books)
                         <div class="col-sm-4">
-                            <a href="article.html"><img style="width: 350px; height: 300px;" src="{{ asset('/image/' . $books->image) }}" class="iw"></a>
                             <div class="blog_p_1lii clearfix">
+                                <center><a href="article.html"><img style="width: 300px; height: 300px;" src="{{ asset('/image/' . $books->image) }}" class="iw"></a></center>
+                                <br>
                                 <h5 class="bold mgt">
                                     <r>{{ $books->title }}</r>
                                     <span class="pull-right col_1">

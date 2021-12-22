@@ -8,13 +8,14 @@
     
     @if (Auth::guest())
     <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-    <li class="active_main"><a href="{{ route('buku') }}"><i class="fa fa-book"></i>Buku</a></li>
+    <li class="active_main"><a href="{{ route('book') }}"><i class="fa fa-book"></i>Buku</a></li>
     <li class="link"><a href="{{ route('register') }}">Register</a></li>
     <li class="link_1"><a href="{{ route('login') }}">Log in</a></li>
 	@else
     <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-    <li><a href="#"><i class="fa fa-user"></i>Buku Saya</a></li>
-    <li class="active_main"><a href="{{ route('buku') }}"><i class="fa fa-book"></i>Buku</a></li>
+        <?php $id = Auth::user()->id; ?>
+    <li><a href="{{ route('mybook', $id) }}"><i class="fa fa-user"></i>Buku Saya</a></li>
+    <li class="active_main"><a href="{{ route('book') }}"><i class="fa fa-book"></i>Buku</a></li>
     
 	<form action="{{ route('logout') }}" method="POST">
 		@csrf
@@ -32,114 +33,80 @@
     <div class="col-sm-12">
 	    <div class="col-sm-8">
 	        <div class="people_header_1">
-			   <p>Cari Buku</p>
-			   <input placeholder="Masukkan nama buku..." class="form_1" type="text">
+                <form action="{{ route('book') }}">
+                    <p>Cari Buku</p>
+                    <input placeholder="Masukkan nama buku..." class="form_1" type="text" name="cari">
+                    <a href="{{ route('book') }}" class="btn btn-danger">Batal</a>
+                </form>
 			</div>
 		</div>
 	</div>
 </section>
 <section id="music" class="clearfix">
 	<div class="col-sm-12">
-        <ul class="nav nav-tabs">
-		    <li class="active"><a data-toggle="tab" href="#home_2">Fashion</a></li>
-		    <li><a data-toggle="tab" href="#menu_2">Business</a></li>
-		    <li><a data-toggle="tab" href="#menu_3">Adventure</a></li>
-		    <li><a data-toggle="tab" href="#menu_4">Outdoor</a></li>
-		    <li><a data-toggle="tab" href="#menu_5">Music</a></li>
-		    <li><a data-toggle="tab" href="#menu_6">Trending</a></li>
-		    <li><a data-toggle="tab" href="#menu_7">Sports</a></li>
-		    <li><a data-toggle="tab" href="#menu_8">Entertainment</a></li>
-        </ul> 
+        <h3 class="text-center">Buku</h3><br>
         <div class="tab-content clearfix">
-            <div id="home_2" class="tab-pane fade in active clearfix">
+            <div class="tab-pane fade in active clearfix">
                 <div class="click clearfix">
                     <div class="col-sm-12 music_inner">
+                        @foreach ($books1 as $b)
                         <div class="col-sm-2">
                             <div class="culture">
-                                <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-                                <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-                                <p class="text-center">Pengupload</p>
-                                <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
+                                <center><a href="#"><img class="thumbnail" src="{{ asset('/image/' . $b->image) }}" style="width: 130px; height: 130px"></a></center>
+                                <h5 class="text-center"><a href="#">{{ $b->title }}</a></h5>
+                                <p class="text-center">{{ $b->user->name }}</p>
+                                <h6 class="text-center"><a href="{{ asset('/file/' . $b->file) }}"><i class="fa fa-download"></i>Unduh</a></h6>
                             </div>
                         </div>
+                        @endforeach
+                    <div>
+                </div>
+            </div>
+            <div class="tab-pane fade in active clearfix">
+                <div class="click clearfix">
+                    <div class="col-sm-12 music_inner">
+                        @foreach ($books2 as $b)
                         <div class="col-sm-2">
                             <div class="culture">
-                                <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-                                <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-                                <p class="text-center">Pengupload</p>
-                                <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-                            </div>
-                        </div><div class="col-sm-2">
-                            <div class="culture">
-                                <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-                                <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-                                <p class="text-center">Pengupload</p>
-                                <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-                            </div>
-                        </div><div class="col-sm-2">
-                            <div class="culture">
-                                <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-                                <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-                                <p class="text-center">Pengupload</p>
-                                <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-                            </div>
-                        </div><div class="col-sm-2">
-                            <div class="culture">
-                                <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-                                <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-                                <p class="text-center">Pengupload</p>
-                                <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-                            </div>
-                        </div><div class="col-sm-2">
-                            <div class="culture">
-                                <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-                                <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-                                <p class="text-center">Pengupload</p>
-                                <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-                            </div>
-                        </div><div class="col-sm-2">
-                            <div class="culture">
-                                <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-                                <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-                                <p class="text-center">Pengupload</p>
-                                <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-                            </div>
-                        </div><div class="col-sm-2">
-                            <div class="culture">
-                                <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-                                <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-                                <p class="text-center">Pengupload</p>
-                                <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-                            </div>
-                        </div><div class="col-sm-2">
-                            <div class="culture">
-                                <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-                                <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-                                <p class="text-center">Pengupload</p>
-                                <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-                            </div>
-                        </div><div class="col-sm-2">
-                            <div class="culture">
-                                <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-                                <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-                                <p class="text-center">Pengupload</p>
-                                <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-                            </div>
-                        </div><div class="col-sm-2">
-                            <div class="culture">
-                                <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-                                <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-                                <p class="text-center">Pengupload</p>
-                                <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
-                            </div>
-                        </div><div class="col-sm-2">
-                            <div class="culture">
-                                <a href="#"><img class="thumbnail" src="img/14.jpg" width="100%"></a>
-                                <h5 class="text-center"><a href="#">Judul Buku</a></h5>
-                                <p class="text-center">Pengupload</p>
-                                <h6 class="text-center"><a href="#"><i class="fa fa-download"></i>Unduh</a></h6>
+                                <center><a href="#"><img class="thumbnail" src="{{ asset('/image/' . $b->image) }}" style="width: 130px; height: 130px"></a></center>
+                                <h5 class="text-center"><a href="#">{{ $b->title }}</a></h5>
+                                <p class="text-center">{{ $b->user->name }}</p>
+                                <h6 class="text-center"><a href="{{ asset('/file/' . $b->file) }}"><i class="fa fa-download"></i>Unduh</a></h6>
                             </div>
                         </div>
+                        @endforeach
+                    <div>
+                </div>
+            </div>
+            <div class="tab-pane fade in active clearfix">
+                <div class="click clearfix">
+                    <div class="col-sm-12 music_inner">
+                        @foreach ($books3 as $b)
+                        <div class="col-sm-2">
+                            <div class="culture">
+                                <center><a href="#"><img class="thumbnail" src="{{ asset('/image/' . $b->image) }}" style="width: 130px; height: 130px"></a></center>
+                                <h5 class="text-center"><a href="#">{{ $b->title }}</a></h5>
+                                <p class="text-center">{{ $b->user->name }}</p>
+                                <h6 class="text-center"><a href="{{ asset('/file/' . $b->file) }}"><i class="fa fa-download"></i>Unduh</a></h6>
+                            </div>
+                        </div>
+                        @endforeach
+                    <div>
+                </div>
+            </div>
+            <div class="tab-pane fade in active clearfix">
+                <div class="click clearfix">
+                    <div class="col-sm-12 music_inner">
+                        @foreach ($books4 as $b)
+                        <div class="col-sm-2">
+                            <div class="culture">
+                                <center><a href="#"><img class="thumbnail" src="{{ asset('/image/' . $b->image) }}" style="width: 130px; height: 130px"></a></center>
+                                <h5 class="text-center"><a href="#">{{ $b->title }}</a></h5>
+                                <p class="text-center">{{ $b->user->name }}</p>
+                                <h6 class="text-center"><a href="{{ asset('/file/' . $b->file) }}"><i class="fa fa-download"></i>Unduh</a></h6>
+                            </div>
+                        </div>
+                        @endforeach
                     <div>
                 </div>
             </div>

@@ -6,7 +6,7 @@
     <li class="brand_1"><a href="{{ route('home') }}"><i class="fa fa-book"></i>SiBook</a></li>
     <li><p>MENU</p></li>
     <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-    <li><a href="{{ route('buku') }}"><i class="fa fa-book"></i>Buku</a></li>
+    <li><a href="{{ route('book') }}"><i class="fa fa-book"></i>Buku</a></li>
 
     <li class="link"><a href="{{ route('register') }}">Register</a></li>
     <li class="link_1 active_main"><a href="{{ route('login') }}">Log in</a></li>

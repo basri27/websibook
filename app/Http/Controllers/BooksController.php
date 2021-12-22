@@ -9,6 +9,73 @@ use App\Models\Category;
 
 class BooksController extends Controller
 {
+    //All Book
+    public function category_book() {
+        $books1 = Book::with('category')
+        ->where('category_id', '=', '1')
+        ->latest()
+        ->take(6)
+        ->get();
+
+        $books2 = Book::with('category')
+        ->where('category_id', '=', '2')
+        ->latest()
+        ->take(6)
+        ->get();
+
+        $books3 = Book::with('category')
+        ->where('category_id', '=', '3')
+        ->latest()
+        ->take(6)
+        ->get();
+
+        $books4 = Book::with('category')
+        ->where('category_id', '=', '4')
+        ->latest()
+        ->take(6)
+        ->get();
+
+        return view('buku', compact('books1', 'books2', 'books3', 'books4'));
+    }
+
+    //Cari Buku
+    public function cari_buku(Request $request)
+    {
+        $cari = $request->cari;
+
+        $books1 = Book::with('category')
+        ->where('category_id', '=', '1')
+        ->where('title', '=', $cari)
+        ->latest()
+        ->take(6)
+        ->get();
+
+        $books2 = Book::with('category')
+        ->where('category_id', '=', '2')
+        ->where('title', '=', $cari)
+        ->latest()
+        ->take(6)
+        ->get();
+
+        $books3 = Book::with('category')
+        ->where('category_id', '=', '3')
+        ->where('title', '=', $cari)
+        ->latest()
+        ->take(6)
+        ->get();
+
+        $books4 = Book::with('category')
+        ->where('category_id', '=', '4')
+        ->where('title', '=', $cari)
+        ->latest()
+        ->take(6)
+        ->get();
+
+        $book = Book::where('title', '=', $cari);
+
+        return view('buku', compact('books1', 'books2', 'books3', 'books4', 'book'));
+    }
+
     public function backend_index() {
         $books = Book::with('category')->get();
         return view('admin.backend_index', compact('books'));

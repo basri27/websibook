@@ -14,13 +14,15 @@ use App\Http\Controllers\BooksController;
 |
 */
 
-Route::get('/buku', function(){
-    return view('buku');
-})->name('buku');
-
 Auth::routes();
 
+//Home
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Buku
+Route::get('/buku', [BooksController::class, 'category_book'])->name('book');
+//Search Book
+Route::get('/buku/cari/', [BooksController::class, 'cari_buku'])->name('cari_buku');
 
 //Admin
 Route::get('/admin/book', [BooksController::class, 'backend_index'])->name('admin_index');

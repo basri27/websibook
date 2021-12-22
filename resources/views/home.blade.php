@@ -8,7 +8,7 @@
     
     @if (Auth::guest())
     <li class="active_main"><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-    <li><a href="{{ route('buku') }}"><i class="fa fa-book"></i>Buku</a></li>
+    <li><a href="{{ route('book') }}"><i class="fa fa-book"></i>Buku</a></li>
     <li class="link"><a href="{{ route('register') }}">Register</a></li>
     <li class="link_1"><a href="{{ route('login') }}">Log in</a></li>
 	@elseif (Auth::user()->username=='admin')
@@ -27,7 +27,7 @@
 	<?php $id = Auth::user()->id; ?>
 	<li><a href="{{ route('mybook', $id) }}"><i class="fa fa-user"></i>Buku Saya</a></li>
 	
-	<li><a href="{{ route('buku') }}"><i class="fa fa-book"></i>Buku</a></li>
+	<li><a href="{{ route('book') }}"><i class="fa fa-book"></i>Buku</a></li>
     
 	<form action="{{ route('logout') }}" method="POST">
 		@csrf
@@ -92,7 +92,7 @@
             @foreach ($book_new as $book)
 			<div class="col-sm-2">
 	            <div class="culture">
-		            <a href="#"><img class="thumbnail" src="{{ asset('/image/' . $book->image) }}" style="width: 140px; height: 120px;"></a>
+		            <center><a href="#"><img class="thumbnail" src="{{ asset('/image/' . $book->image) }}" style="width: 120px; height: 100px;"></a></center>
 		            <h5 class="text-center"><a href="#">{{ $book->title }}</a></h5>
 		            <p class="text-center">{{ $book->user->name }}</p>
 		            <h6 class="text-center"><a href="{{ asset('/file/' . $book->file) }}"><i class="fa fa-download"></i>Unduh</a></h6>
@@ -153,7 +153,7 @@
             @foreach ($book_new as $book)
 			<div class="col-sm-2">
 	            <div class="culture">
-		            <a href="#"><img class="thumbnail" src="{{ asset('/image/' . $book->image) }}" style="width: 140px; height: 120px;"></a>
+		            <center><a href="#"><img class="thumbnail" src="{{ asset('/image/' . $book->image) }}" style="width: 120px; height: 100px;"></a></center>
 		            <h5 class="text-center"><a href="#">{{ $book->title }}</a></h5>
 		            <p class="text-center">{{ $book->user->name }}</p>
 		            <h6 class="text-center"><a href="{{ asset('/file/' . $book->file) }}"><i class="fa fa-download"></i>Unduh</a></h6>
